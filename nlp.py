@@ -2,14 +2,9 @@ import spacy
 # import nltk
 # nltk.download('punkt_tab')
 
-from nltk.stem import PorterStemmer
-# from nltk.tokenize import word_tokenize
 
 # Load SpaCy model for tokenization and lemmatization
 nlp = spacy.load("en_core_web_sm")
-
-# Initialize NLTK's PorterStemmer for stemming
-stemmer = PorterStemmer()
 
 
 def preprocess_input(text: str) -> str:

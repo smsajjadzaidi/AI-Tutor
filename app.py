@@ -66,6 +66,6 @@ async def get_answer(question: Question):
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to the Question Classifier API"}
+    return {"message": "Welcome to the AI Tutor API"}
 
 
