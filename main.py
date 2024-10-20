@@ -11,13 +11,17 @@ svm_model = joblib.load('svm/svm_model.pkl')
 vectorizer = joblib.load('svm/tfidf_vectorizer.pkl')
 
 # Streamlit UI
-st.title("AI Tutor")
+col1, col2 = st.columns([3, 1])
+with col1:
+    st.title("AI Tutor")
+with col2:
+    st.image("PBG mark2 color.svg", width=150)  # Increased size from 100 to 150
+
 st.write("This app tokenize and lemmatize user input and classify questions into categories such as Factual,"
-         " Conceptual, and Other. It then finally passes it to GPT-4 to get the answer")
+         " Conceptual, and Other. It then finally passes it to Groq to get the answer")
 
 # Input for user to enter a question
 question_input = st.text_input("Enter a question:")
-
 
 def classify_question(question):
     # Step 1: Preprocess the question (tokenization and lemmatization)

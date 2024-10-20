@@ -1,8 +1,8 @@
 # AI-Tutor
 
-**AI Tutor Bot** is an interactive web application designed to classify user questions into categories such as **factual**, **conceptual**, or **other**. Once a question is classified, the app generates an appropriate response using **GPT-4**. This solution is built on **Streamlit** for easy UI interaction but also integrates **FastAPI** for backend flexibility in future expansions.
+**AI Tutor Bot** is an interactive web application designed to classify user questions into categories such as **factual**, **conceptual**, or **other**. Once a question is classified, the app generates an appropriate response using *Groq API**. This solution is built on **Streamlit** for easy UI interaction but also integrates **FastAPI** for backend flexibility in future expansions.
 
-You can try out the app [here](https://gpt-tutors.streamlit.app/).
+You can try out the app [here](https://groq-aitutor.streamlit.app/).
 
 ## Features
 
@@ -12,8 +12,8 @@ You can try out the app [here](https://gpt-tutors.streamlit.app/).
       - **Conceptual**: For questions requiring an explanation of a concept.
       - **Other**: For questions that don't fit into the other categories (e.g., open-ended, opinion-based).
       
-2. **GPT-4 Integration**:
-    - After classification, the app generates responses using GPT-4 based on the type of question.
+2. **Groq Integration**:
+    - After classification, the app generates responses using Groq with the llama-3.2-11b-vision-preview model based on the type of question.
     - Factual questions receive short, direct answers.
     - Conceptual questions receive detailed explanations.
     - Other questions are answered by analyzing the tone and intent behind the question.
@@ -23,7 +23,7 @@ You can try out the app [here](https://gpt-tutors.streamlit.app/).
 
 4. **Streamlit UI**:
     - Provides an intuitive and easy-to-use interface where users can input questions and get real-time classified answers.
-    - Currently deployed and hosted on **Streamlit** at [gpt-tutors.streamlit.app](https://gpt-tutors.streamlit.app/).
+    - Currently deployed and hosted on **Streamlit** at [groq-aitutor.streamlit.app](https://groq-aitutor.streamlit.app/).
 
 5. **FastAPI Integration**:
     - Although the current version runs on Streamlit, there’s also a **FastAPI** backend built-in, allowing for future flexibility and potential integration with more complex services.
@@ -61,8 +61,8 @@ We trained the **Support Vector Machine (SVM)** classifier using the preprocesse
 
 1. **User Input**: Users enter a question in the Streamlit app's input field.
 2. **Classification**: The SVM model classifies the question into one of three categories: factual, conceptual, or other.
-3. **GPT-4 Response**: Based on the question type, a prompt is created and passed to GPT-4, which generates the appropriate response.
-4. **Answer Display**: The app displays the classified category and the GPT-4 response on the screen.
+3. **Groq Response**: Based on the question type, a prompt is created and passed to Groq API, which generates the appropriate response.
+4. **Answer Display**: The app displays the classified category and the Groq API response on the screen.
 
 ---
 

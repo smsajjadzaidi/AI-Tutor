@@ -6,17 +6,16 @@ import asyncio
 
 from pydantic import BaseModel, Field
 from typing import AsyncGenerator
-from langchain_community.chat_models import ChatOpenAI
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 from langchain.schema import HumanMessage, SystemMessage, BaseMessage
 load_dotenv()
 
 # Get the OpenAI API key from the .env file
-openai_api_key = os.getenv("OPENAI_API_KEY")
+groq_api_key = os.getenv("GROQ_API_KEY")
 
 # Check if the key is loaded correctly
-if not openai_api_key:
-    raise ValueError("OpenAI API key not found. Make sure it's set in the .env file.")
+if not groq_api_key:  
+    raise ValueError("Groq API key not found. Make sure it's set in the .env file.")
 
 
 # Pydantic model for the response
@@ -27,7 +26,7 @@ class GPTResponse(BaseModel):
 
 class GPTConnector:
 
-    def __init__(self, model: str = 'gpt-4', temperature: float = 0.0,
+    def __init__(self, model: str = 'llama-3.2-11b-vision-preview', temperature: float = 0.0,
                  system_message: str = "You are an expert AI Tutor"):
         self.model = model
         self.temperature = temperature
@@ -39,9 +38,9 @@ class GPTConnector:
     )
     async def get_gpt_response_stream(self, question: str) -> AsyncGenerator[GPTResponse, None]:
 
-        chat_model = ChatOpenAI(
+        chat_model = ChatGroq(
             model_name=self.model,
-            openai_api_key=openai_api_key,
+            groq_api_key=groq_api_key,
             streaming=True,
             temperature=self.temperature,
         )
